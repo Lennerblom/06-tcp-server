@@ -2,5 +2,5 @@
 
 let eventEmitter = require('../app.js');
 
-eventEmitter.on('something', () => console.log('hello there'));
-eventEmitter.on('otherSomething', () => console.log('what?'));
+eventEmitter.on('Welcome', () => console.log('hello there'));
+eventEmitter.on('Welcome', () => console.log('Welcome to my chat room'));

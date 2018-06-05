@@ -8,7 +8,7 @@ const uuid = require('uuid/v4');
 const PORT = process.env.PORT || 3001;
 const server = net.createServer();
 const eventEmitter = new EventEmitter();
-const socketPool = {};
+const socketPool = [];
 
 
 class User {
