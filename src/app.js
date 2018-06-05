@@ -66,12 +66,17 @@ eventEmitter.on('@nickname', (data, userId) => {
   console.log(newName);
 });
 
-eventEmitter.on('@dm', (data, userId, msg) => {
+eventEmitter.on('@dm', (data, userId) => {
+  console.log(userId);
   for( let connection in socketPool ) {
     let user = socketPool[connection];
-    let otherUser = socketPool.nickname = data.target;
-    user.socket.write(`<${otherUser}>: ${data.payload}\n`);
-    console.log(`<${socketPool[userId].nickname}>: ${msg.payload}\n`);
+    let otherUser = data.target;
+    let msg = data.message;
+  
+    if(socketPool[userId].nickname === otherUser) {
+      user.socket.write(`<${otherUser}>: ${data.payload}\n`);
+      socketPool[otherUser].socket.write = ('' + msg);
+    }      
   }
 });
 
